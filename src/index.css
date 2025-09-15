@@ -8,51 +8,69 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Magical Birthday Theme */
+    --background: 260 45% 6%;
+    --foreground: 315 100% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 260 40% 8%;
+    --card-foreground: 315 100% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 260 40% 8%;
+    --popover-foreground: 315 100% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 315 100% 70%;
+    --primary-foreground: 260 45% 6%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 260 40% 15%;
+    --secondary-foreground: 315 100% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 260 40% 12%;
+    --muted-foreground: 315 20% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 280 100% 70%;
+    --accent-foreground: 260 45% 6%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 315 100% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 260 40% 20%;
+    --input: 260 40% 15%;
+    --ring: 315 100% 70%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom Birthday Colors */
+    --magical-pink: 315 100% 70%;
+    --magical-purple: 280 100% 70%;
+    --deep-purple: 260 45% 6%;
+    --soft-purple: 260 40% 15%;
+    --heart-pink: 330 100% 75%;
+    --celebration-yellow: 45 100% 70%;
+    --cake-orange: 25 100% 65%;
+    
+    /* Gradients */
+    --gradient-magical: linear-gradient(135deg, hsl(var(--magical-pink)), hsl(var(--magical-purple)));
+    --gradient-celebration: linear-gradient(135deg, hsl(var(--magical-purple)), hsl(var(--accent)));
+    --gradient-soft: linear-gradient(180deg, hsl(var(--background)), hsl(var(--soft-purple)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--soft-purple)));
+    
+    /* Shadows & Effects */
+    --shadow-magical: 0 10px 40px -10px hsl(var(--magical-pink) / 0.4);
+    --shadow-glow: 0 0 30px hsl(var(--magical-purple) / 0.5);
+    --shadow-card: 0 8px 32px -8px hsl(var(--deep-purple) / 0.6);
+    
+    /* Animations */
+    --transition-magical: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --bounce-gentle: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 260 40% 8%;
+    --sidebar-foreground: 315 100% 95%;
+    --sidebar-primary: 315 100% 70%;
+    --sidebar-primary-foreground: 260 45% 6%;
+    --sidebar-accent: 260 40% 15%;
+    --sidebar-accent-foreground: 315 100% 95%;
+    --sidebar-border: 260 40% 20%;
+    --sidebar-ring: 315 100% 70%;
   }
 
   .dark {
@@ -101,5 +119,156 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-soft);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Magical floating hearts animation */
+  .floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .floating-heart {
+    position: absolute;
+    color: hsl(var(--heart-pink));
+    animation: float-up 4s linear infinite;
+    opacity: 0;
+  }
+  
+  @keyframes float-up {
+    0% {
+      opacity: 1;
+      transform: translateY(100vh) scale(0);
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(90vh) scale(1);
+    }
+    90% {
+      opacity: 1;
+      transform: translateY(10vh) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10vh) scale(0);
+    }
+  }
+  
+  /* Confetti animation */
+  .confetti {
+    position: fixed;
+    top: -10px;
+    z-index: 1;
+    animation: confetti-fall 3s linear infinite;
+  }
+  
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+      transform: translateY(100vh) rotate(720deg);
+    }
+  }
+  
+  /* Magical glow effect */
+  .magical-glow {
+    box-shadow: var(--shadow-glow);
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow-pulse {
+    from {
+      box-shadow: var(--shadow-glow);
+    }
+    to {
+      box-shadow: 0 0 40px hsl(var(--magical-purple) / 0.8);
+    }
+  }
+  
+  /* Bounce animation */
+  .bounce-in {
+    animation: bounce-in 0.6s var(--bounce-gentle);
+  }
+  
+  @keyframes bounce-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Card reveal animation */
+  .card-reveal {
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+  
+  .card-reveal.flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+  }
+  
+  /* Heart beat animation */
+  .heart-beat {
+    animation: heart-beat 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes heart-beat {
+    0% {
+      transform: scale(1);
+    }
+    14% {
+      transform: scale(1.1);
+    }
+    28% {
+      transform: scale(1);
+    }
+    42% {
+      transform: scale(1.1);
+    }
+    70% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-magical);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

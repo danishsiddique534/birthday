@@ -57,6 +57,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom magical birthday colors
+        magical: {
+          pink: "hsl(var(--magical-pink))",
+          purple: "hsl(var(--magical-purple))",
+          deep: "hsl(var(--deep-purple))",
+          soft: "hsl(var(--soft-purple))",
+        },
+        heart: "hsl(var(--heart-pink))",
+        celebration: "hsl(var(--celebration-yellow))",
+        cake: "hsl(var(--cake-orange))",
+      },
+      backgroundImage: {
+        'gradient-magical': 'var(--gradient-magical)',
+        'gradient-celebration': 'var(--gradient-celebration)',
+        'gradient-soft': 'var(--gradient-soft)',
+        'gradient-card': 'var(--gradient-card)',
+      },
+      boxShadow: {
+        'magical': 'var(--shadow-magical)',
+        'glow': 'var(--shadow-glow)',
+        'card-magical': 'var(--shadow-card)',
       },
       borderRadius: {
         lg: "var(--radius)",
